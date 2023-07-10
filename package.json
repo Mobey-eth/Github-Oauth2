@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "start": "platformatic start",
+    "migrate": "platformatic db migrations apply"
+  },
+  "devDependencies": {
+    "fastify": "^4.19.2"
+  },
+  "dependencies": {
+    "@fastify/oauth2": "^7.2.1",
+    "@platformatic/sql-graphql": "^0.30.0",
+    "@platformatic/sql-mapper": "^0.30.0",
+    "platformatic": "^0.30.0",
+    "undici": "^5.22.1"
+  },
+  "engines": {
+    "node": "^18.8.0 || >=19"
+  }
+}
