@@ -79,36 +79,3 @@ module.exports = async function (app, options) {
     return { user };
   });
 };
-
-// module.exports = async function (app, options) {
-//   const fastify = require("fastify")({ logger: { level: "trace" } });
-//   const oauthPlugin = require("@fastify/oauth2");
-
-//   app.register(oauthPlugin, {
-//     name: "github",
-//     credentials: {
-//       client: {
-//         id: "5e3a9f0f81b8bc10b766",
-//         secret: "23c7032a35a4bdc6ff94a51aa9c8fe8bca25de5d",
-//       },
-//       auth: oauthPlugin.GITHUB_CONFIGURATION,
-//     },
-//     // register a fastify url to start the redirect flow
-//     startRedirectPath: "/login/github",
-//     // facebook redirect here after the user login
-//     callbackUri: "http://localhost:3042/login/github/callback",
-//   });
-
-//   app.get("/login/github/callback", async function (request, reply) {
-//     const { token } = await this.github.getAccessTokenFromAuthorizationCodeFlow(
-//       request
-//     );
-
-//     console.log(token.access_token);
-
-//     // if later you need to refresh the token you can use
-//     // const { token: newToken } = await this.getNewAccessTokenUsingRefreshToken(token)
-
-//     reply.send({ access_token: token.access_token });
-//   });
-// };
