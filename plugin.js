@@ -58,7 +58,7 @@ module.exports = async function (app, options) {
     callbackUri,
   });
 
-  app.get(`/login/${provider}/callback`, async function (request, reply) {
+  app.get(`/login/github/callback`, async function (request, reply) {
     const { token } = await this[
       provider
     ].getAccessTokenFromAuthorizationCodeFlow(request);
