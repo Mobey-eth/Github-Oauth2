@@ -1,6 +1,11 @@
 
 -- Add SQL in this file to create the database tables for your API
-CREATE TABLE IF NOT EXISTS movies (
+CREATE TABLE user (
   id INTEGER PRIMARY KEY,
-  title TEXT NOT NULL
-);
+  fullName TEXT,
+  email TEXT,
+  provider TEXT,
+  token OBJECT,
+  providerId INTEGER
+)
+

@@ -48,8 +48,8 @@ module.exports = async function (app, options) {
     name: provider,
     credentials: {
       client: {
-        id: "5e3a9f0f81b8bc10b766",
-        secret: "23c7032a35a4bdc6ff94a51aa9c8fe8bca25de5d",
+        id: "YOUR_CLIENT_ID",
+        secret: "YOUR_CLIENT_SECRET",
       },
       auth: providers[provider].config,
     },
@@ -65,16 +65,16 @@ module.exports = async function (app, options) {
 
     const user = await providers[provider].getUserDetails(token);
 
-    // const dbUsers = await app.platformatic.entities.user.find({
-    //   where: {
-    //     provider: { eq: provider },
-    //     providerId: { eq: user.providerId },
-    //   },
-    // });
+    const dbUsers = await app.platformatic.entities.user.find({
+      where: {
+        provider: { eq: provider },
+        providerId: { eq: user.providerId },
+      },
+    });
 
-    // if (dbUsers.length === 0) {
-    //   await app.platformatic.entities.user.save({ input: user });
-    // }
+    if (dbUsers.length === 0) {
+      await app.platformatic.entities.user.save({ input: user });
+    }
 
     return { user };
   });
