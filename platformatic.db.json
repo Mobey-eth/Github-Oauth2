@@ -26,8 +26,8 @@
       "path": "plugin.js",
       "options": {
         "provider": "github",
-        "clientId": "5e3a9f0f81b8bc10b766",
-        "clientSecret": "23c7032a35a4bdc6ff94a51aa9c8fe8bca25de5d"
+        "clientId": "YOUR_CLIENT_ID",
+        "clientSecret": "YOUR_CLIENT_SECRET"
       }
     }]
   },
