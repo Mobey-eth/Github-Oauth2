@@ -36,24 +36,24 @@ async function getGitHubUserDetails(token) {
 module.exports = async function (app, options) {
   const { provider } = options;
 
-  if (!providers[provider]) {
-    throw new Error(`Unknown provider option ${provider}`);
-  }
+  // if (!providers[provider]) {
+  //   throw new Error(`Unknown provider option ${provider}`);
+  // }
 
-  const startRedirectPath = `/login/${provider}`;
+  const startRedirectPath = `/login/github`;
   // TODO understand why it is using a full URL
-  const callbackUri = `http://127.0.0.1:3042/login/${provider}/callback`;
+  const callbackUri = `http://127.0.0.1:3042/login/github/callback`;
 
   await app.register(fastifyOauth2, {
-    name: provider,
+    name: "github",
     credentials: {
       client: {
         id: "YOUR_CLIENT_ID",
         secret: "YOUR_CLIENT_SECRET",
       },
-      auth: providers[provider].config,
+      auth: fastifyOauth2.GITHUB_CONFIGURATION,
     },
-    scope: providers[provider].scope,
+    scope: ["user:email", "read:user"],
     startRedirectPath,
     callbackUri,
   });
