@@ -4,13 +4,13 @@
 const fastifyOauth2 = require("@fastify/oauth2");
 const { request } = require("undici");
 
-const providers = {
-  github: {
-    config: fastifyOauth2.GITHUB_CONFIGURATION,
-    getUserDetails: getGitHubUserDetails,
-    scope: ["user:email", "read:user"],
-  },
-};
+// const providers = {
+//   github: {
+//     config: fastifyOauth2.GITHUB_CONFIGURATION,
+//     getUserDetails: getGitHubUserDetails,
+//     scope: ["user:email", "read:user"],
+//   },
+// };
 
 async function getGitHubUserDetails(token) {
   const res = await request("https://api.github.com/user", {
@@ -63,7 +63,7 @@ module.exports = async function (app, options) {
       provider
     ].getAccessTokenFromAuthorizationCodeFlow(request);
 
-    const user = await providers[provider].getUserDetails(token);
+    const user = await getGitHubUserDetails(token);
 
     const dbUsers = await app.platformatic.entities.user.find({
       where: {
